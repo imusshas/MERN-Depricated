@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM | Chai aur Code</title>
+    <style>
+      body {
+        background-color: #212121;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="language">
+      <li>JavaScript</li>
+    </ul>
+  </body>
+  <script>
+    function addLanguage(languageName) {
+      const li = document.createElement("li");
+      li.innerHTML = `${languageName}`;
+      document.querySelector(".language").appendChild(li);
+    }
+
+    addLanguage("Java");
+    addLanguage("TypeScript");
+
+    function addLanguageOptimitedly(languageName) {
+      const li = document.createElement("li");
+      li.appendChild(document.createTextNode(languageName));
+      document.querySelector(".language").appendChild(li);
+    }
+
+    addLanguageOptimitedly("C++");
+
+    // Edit
+    const secondLang = document.querySelector("li:nth-child(2)");
+    // secondLang.innerHTML = "C#"      Not Optimized
+    const newLi = document.createElement("li");
+    newLi.textContent = "C#";
+    secondLang.replaceWith(newLi);
+
+    // Edit
+    const firstLang = document.querySelector("li:nth-child(1)");
+    firstLang.outerHTML = "<li>Pyhton</li>";
+
+    // Remove
+    const lastLi = document.querySelector("li:last-child");
+    lastLi.remove();
+  </script>
+</html>
